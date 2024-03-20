@@ -16,17 +16,13 @@
             "outputPath": "dist/got",
             "index": "projects/got/src/index.html",
             "browser": "projects/got/src/main.ts",
-            "polyfills": [
-              "zone.js"
-            ],
+            "polyfills": ["zone.js"],
             "tsConfig": "projects/got/tsconfig.app.json",
             "assets": [
-              "projects/got/src/favicon.ico",
+              "projects/got/src/favicon.png",
               "projects/got/src/assets"
             ],
-            "styles": [
-              "projects/got/src/styles.css"
-            ],
+            "styles": ["projects/got/src/styles.css"],
             "scripts": []
           },
           "configurations": {
@@ -74,18 +70,13 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ],
+            "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "projects/got/tsconfig.spec.json",
             "assets": [
               "projects/got/src/favicon.ico",
               "projects/got/src/assets"
             ],
-            "styles": [
-              "projects/got/src/styles.css"
-            ],
+            "styles": ["projects/got/src/styles.css"],
             "scripts": []
           }
         },
@@ -102,8 +93,6 @@
     }
   },
   "cli": {
-    "schematicCollections": [
-      "@angular-eslint/schematics"
-    ]
+    "schematicCollections": ["@angular-eslint/schematics"]
   }
 }
