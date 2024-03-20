@@ -7,6 +7,7 @@ export interface Character {
   isAlive: boolean;
   type: CharacterType | '';
   message: string;
+  yearsReigning?: number;
   weapon?: string;
   skillsRange?: number;
   lord?: CharacterType;

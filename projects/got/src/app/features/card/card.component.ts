@@ -23,23 +23,51 @@ import { Character } from '../../core/models/character';
               <li>
                 Estado:
                 <span class="character__status">
-                  <!-- {{ renderLive(character.isAlive) }} -->
+                  @if (character.isAlive) {
+                  <i class="fas fa-thumbs-up"></i>
+                  } @else {
+                  <i class="fas fa-thumbs-down"></i>
+                  }
                 </span>
               </li>
             </ul>
           </div>
           <div class="character__overlay">
             <ul class="list-unstyled">
-              <!-- {{
-              selectCharacterData(character)
-            }} -->
+              @switch (character.type) { @case ('king') {
+              <li>Años de reinado: {{ character.yearsReigning }}</li>
+              } @case ('fighter') {
+              <li>Arma: {{ character.weapon }}</li>
+              <li>Destreza: {{ character.skillsRange }}</li>
+              } @case ('counselor') {
+              <li>Asesora a: {{ character.lord }}</li>
+              } @case ('squire') {
+              <li>Peloteo: {{ character.serverRange }}</li>
+              <li>Sirve a: {{ character.master }}</li>
+              } }
             </ul>
             <div class="character__actions">
-              <button class="character__action btn talk">habla</button>
-              <button class="character__action btn kill">muere<</button>
+              <button
+                class="character__action btn talk"
+                (click)="talk($event)"
+                id="{{ character.name }}"
+              >
+                habla
+              </button>
+              <button class="character__action btn click" (click)="kill()">
+                muere
+              </button>
             </div>
           </div>
         </div>
+      </div>
+      <div class="comunications" id="{{ character.name }}">
+        <p class="comunications__text display-1">{{ character.message }}</p>
+        <img
+          class="comunications__picture"
+          src="assets/img/{{ character.name.toLowerCase() }}.jpg"
+          alt="Foto de {{ character.name }} {{ character.house }}"
+        />
       </div>
     </li>
   `,
@@ -47,25 +75,17 @@ import { Character } from '../../core/models/character';
 })
 export class CardComponent {
   @Input({ required: true }) character!: Character;
-  // renderLive();
-  // selectCharacterData = (character: anyCharacter) => {
-  //   switch (character.type) {
-  //     case 'king':
-  //       return ` <li>Años de reinado:
-  //     ${(character as King).kingdomYears}</li>`;
-  //     case 'fighter':
-  //       return `<li>Arma:   ${(character as Fighter).weapon}</li>
-  //           <li>Destreza: ${(character as Fighter).skillsRange}</li>`;
-  //     case 'counselor':
-  //       return `
-  //           <li>Asesora a: ${(character as Counselor).lord.name}</li>`;
-  //     case 'squire':
-  //       return `
-  //     <li>Peloteo: ${(character as Squire).serverRange}</li>
-  //     <li>Sirve a: ${(character as Squire).master.name}</li>
-  //     `;
-  //     default:
-  //       return '';
-  //   }
-  // };
+
+  talk($event: Event) {
+    const id = ($event.target as HTMLButtonElement).id;
+    const comunications = document.querySelector('div#' + id);
+    comunications?.classList.add('on');
+    setTimeout(() => {
+      comunications?.classList.remove('on');
+    }, 2000);
+  }
+
+  kill() {
+    this.character.isAlive = false;
+  }
 }

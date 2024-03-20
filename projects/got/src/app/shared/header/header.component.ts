@@ -16,6 +16,7 @@ import { Component, Input } from '@angular/core';
       color: black;
       text-align: center;
       font-family: "Cinzel", serif;
+      padding-block-start: 2rem;
     }
 
     h1 {

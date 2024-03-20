@@ -19,6 +19,7 @@ li {
   justify-content: center;
   align-items: center;
   gap: 1rem;
+  margin-block-start: 20vh;
 }
 .character {
   flex-basis: auto;
@@ -31,11 +32,6 @@ li {
   object-fit: cover;
   object-position: top;
   height: 200px;
-}
-.character__info {
-  display: flex;
-  align-items: center;
-  padding-block-end: 1rem;
 }
 .character__card {
   display: flex;
@@ -97,6 +93,7 @@ li {
   transition: all 0.3s;
   right: 100vw;
   left: -100vw;
+  z-index: 1;
 }
 .comunications.on {
   right: 0;

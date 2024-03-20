@@ -8,6 +8,7 @@ export const getCharacters = async (): Promise<Character[]> => [
     isAlive: true,
     type: 'king',
     message: 'Vais a morir todos',
+    yearsReigning: 3,
   },
   {
     name: 'Jaime',
@@ -24,7 +25,7 @@ export const getCharacters = async (): Promise<Character[]> => [
     house: 'Targaryen',
     age: 25,
     isAlive: true,
-    type: 'king',
+    type: 'fighter',
     message: 'Primero pego y luego pregunto',
     weapon: 'dragon',
     skillsRange: 10,
